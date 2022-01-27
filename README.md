@@ -1,3 +1,3 @@
-# [Your plugin name]
+# Plausible Link
 
-[Describe what your plugin does, and how users you can configure it! Screenshots are always welcome!]
+Datocms plugin that provides a link to plausible for the current record on the sidebar
