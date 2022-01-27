@@ -1,3 +1,25 @@
 .inspector {
   margin-top: var(--spacing-l);
 }
+
+.settings-section {
+  font-weight: bold;
+}
+
+.plausible-link {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.plausible-link:hover {
+  text-decoration: underline;
+}
+
+.plausible-logo {
+  margin-right: 0.3rem;
+  width: 2rem;
+  height: 2rem;
+}
