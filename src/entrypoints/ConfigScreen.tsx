@@ -1,6 +1,13 @@
 import { RenderConfigScreenCtx } from "datocms-plugin-sdk";
-import { Canvas, Form, FieldGroup, TextField, Button } from "datocms-react-ui";
-import { ChangeEvent, Fragment, useState } from "react";
+import {
+  Canvas,
+  Form,
+  FieldGroup,
+  TextField,
+  Button,
+  SelectField,
+} from "datocms-react-ui";
+import { useState, Fragment, useEffect, ChangeEvent } from "react";
 import styles from "./styles.module.css";
 
 type Props = {
@@ -12,10 +19,19 @@ export default function ConfigScreen({ ctx }: Props) {
     ctx.plugin.attributes.parameters
   );
 
+  const [modelSlugOptions, setModelSlugOptions]: any = useState({});
+
   const updateConfigField = (newValue: string, event: ChangeEvent) => {
     setPluginConfig({
       ...pluginConfig,
       [event.target.id]: newValue,
+    });
+  };
+
+  const updateSelectConfigField = (newValue: any, action: any) => {
+    setPluginConfig({
+      ...pluginConfig,
+      [action.name]: newValue,
     });
   };
 
@@ -28,44 +44,86 @@ export default function ConfigScreen({ ctx }: Props) {
     }
   };
 
+  const models = Object.values(ctx.itemTypes).filter(
+    (type: any) => !type.attributes.modular_block
+  );
+
+  useEffect(() => {
+    const fetchModelFields = async () => {
+      const slugOptions: any = {};
+
+      const allFields = await Promise.all(
+        models.map(async (model: any) => {
+          return { [model.id]: await ctx.loadItemTypeFields(model.id) };
+        })
+      );
+
+      allFields.forEach((modelFields: any) => {
+        const fieldsArray = (Object.values(modelFields)[0] as any).filter(
+          (field: any) => field.attributes.field_type === "string"
+        );
+
+        slugOptions[Object.keys(modelFields)[0]] = fieldsArray.map(
+          (field: any) => {
+            return {
+              label: field.attributes.label,
+              value: field.attributes.api_key,
+            };
+          }
+        );
+      });
+
+      setModelSlugOptions(slugOptions);
+    };
+
+    fetchModelFields();
+  }, []);
+
   return (
     <Canvas ctx={ctx}>
-      <p className={styles["settings-section"]}>URL patterns per model:</p>
-
       <Form onSubmit={saveConfig}>
         <FieldGroup>
-          {Object.values(ctx.itemTypes)
-            .filter((type: any) => !type.attributes.modular_block)
-            .map((model: any, i) => (
-              <Fragment key={`fragment-${i}`}>
-                <TextField
-                  key={`pattern-field-site-${i + 1}`}
-                  name={`${model.attributes.name}-site`}
-                  id={`${model.attributes.name}-site`}
-                  label={`${model.attributes.name} Plausible Site`}
-                  value={
-                    (pluginConfig[`${model.attributes.name}-site`] as string) ||
-                    ""
-                  }
-                  placeholder="ex: oddcamp.com"
-                  onChange={updateConfigField}
-                />
-                <br />
-                <TextField
-                  key={`pattern-field-${i + 1}`}
-                  name={`${model.attributes.name}-urlPattern`}
-                  id={`${model.attributes.name}-urlPattern`}
-                  label={`${model.attributes.name} URL Pattern`}
-                  value={
-                    (pluginConfig[
-                      `${model.attributes.name}-urlPattern`
-                    ] as string) || ""
-                  }
-                  placeholder="ex: ?page=%2F"
-                  onChange={updateConfigField}
-                />
-              </Fragment>
-            ))}
+          <TextField
+            name={`plausible-site`}
+            id={`plausible-site`}
+            label={`Plausible Site`}
+            value={(pluginConfig[`plausible-site`] as string) || ""}
+            placeholder="ex: oddcamp.com"
+            onChange={updateConfigField}
+          />
+          <p className={styles["settings-section"]}>URL patterns per model:</p>
+          {models.map((model: any, i) => (
+            <Fragment key={`fragment-${i + 1}`}>
+              <TextField
+                name={`${model.attributes.name}-urlPattern`}
+                id={`${model.attributes.name}-urlPattern`}
+                label={`${model.attributes.name} URL Pattern`}
+                value={
+                  (pluginConfig[
+                    `${model.attributes.name}-urlPattern`
+                  ] as string) || ""
+                }
+                placeholder="ex: ?page=%2F"
+                onChange={updateConfigField}
+              />
+              <br />
+              <SelectField
+                name={`${model.attributes.name}-slugField`}
+                id={`${model.attributes.name}-slugField`}
+                label={`${model.attributes.name} Slug Field`}
+                value={
+                  (pluginConfig[`${model.attributes.name}-slugField`] as any) ||
+                  (modelSlugOptions[`${model.id}`] &&
+                    modelSlugOptions[`${model.id}`][0]) ||
+                  null
+                }
+                selectInputProps={{
+                  options: modelSlugOptions[`${model.id}`],
+                }}
+                onChange={updateSelectConfigField}
+              />
+            </Fragment>
+          ))}
         </FieldGroup>
         <FieldGroup>
           <Button fullWidth buttonType="primary" type="submit">

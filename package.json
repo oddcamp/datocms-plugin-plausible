@@ -1,5 +1,5 @@
 {
-  "name": "plausible-datocms-plugin",
+  "name": "datocms-plugin-plausible-link",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
