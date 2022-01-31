@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { RenderConfigScreenCtx } from "datocms-plugin-sdk";
 import {
   Canvas,
