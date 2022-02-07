@@ -12,11 +12,11 @@ In your DatoCMS project, go to Settings -> Plugins -> Add new (plus sign at the 
 
 In your DatoCMS project, go to Settings -> Plugins -> Add new (plus sign at the bottom) -> Create new plugin -> Enter the following configuration:
 
-- Plugin Name: Plausible
+- **Plugin Name:** Plausible
 
-- Small Description: Provides sidebar links to Plausible
+- **Small Description:** Provides sidebar links to Plausible
 
-- Entry Point URL: https://datocms-plugin-plausible.netlify.app/
+- **Entry Point URL:** https://datocms-plugin-plausible.netlify.app/
 
 ![Plugin Settings](./docs/plugin-settings-01.png)
 
@@ -26,18 +26,19 @@ Then click on Save plugin settings
 
 After installing the plugin, in the new settings form we must enter the parameters for our Plausible project.
 
-- Plausible Site:  
-  The name of our site in plausible, ex: mysite.com
+- **Plausible Site:** The name of our site in plausible,  
+  ex: mysite.com
 
 Then for each model, we'll have the following fields:
 
-- [DATOCMS MODEL] URL Pattern:  
-  The pattern used to construct the Plausible URL for the specified model, ex: ?page=%2f
+- **[DATOCMS MODEL] URL Pattern:** The pattern used to construct the Plausible URL for the specified model,  
+  ex: ?page=%2f
 
-- [DATOCMS MODEL] Slug Field:  
-  The field of the specified model that will be used as slug, ex: First Name
+- **[DATOCMS MODEL] Slug Field:** The field of the specified model that will be used as slug,  
+  ex: First Name
 
-The combination of the 3 parameters will be later used by the plugin to create a link, ex: https://plausible.io/mysite.com?page=%2fjoakim
+The combination of the 3 parameters will be later used by the plugin to create a link, ex:   
+https://plausible.io/mysite.com?page=%2fjoakim
 
 ![Plugin Parameters](./docs/plugin-settings-02.png)
 
