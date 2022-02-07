@@ -37,12 +37,19 @@ Then for each model, we'll have the following fields:
 - **[DATOCMS MODEL] Slug Field:** The field of the specified model that will be used as slug,  
   ex: First Name
 
-The combination of the 3 parameters will be later used by the plugin to create a link, ex:   
+The combination of the 3 parameters will be later used by the plugin to create a link, ex:  
 https://plausible.io/mysite.com?page=%2fjoakim
 
 ![Plugin Parameters](./docs/plugin-settings-02.png)
 
 Then click on Save Settings
+
+## Plugin
+
+After the setup is complete, we can navigate to content and select a record from one our models.  
+The plugin will show up in the sidebar.
+
+![Plugin Link](./docs/plugin-link.png)
 
 ## Development
 
