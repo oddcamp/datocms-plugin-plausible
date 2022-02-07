@@ -11,8 +11,8 @@ connect({
   itemFormSidebarPanels() {
     return [
       {
-        id: "plausible_link",
-        label: "Plausible Link",
+        id: "plausible",
+        label: "Plausible",
       },
     ];
   },

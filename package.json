@@ -1,5 +1,5 @@
 {
-  "name": "datocms-plugin-plausible-link",
+  "name": "datocms-plugin-plausible",
   "version": "0.1.0",
   "private": true,
   "description": "Provides a sidebar link to plausible for the current record",
@@ -45,7 +45,7 @@
     "datocms-plugin"
   ],
   "datoCmsPlugin": {
-    "title": "Plausible Link",
+    "title": "Plausible",
     "coverImage": "docs/cover.png",
     "entryPoint": "build/index.html",
     "permissions": []

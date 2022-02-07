@@ -8,10 +8,16 @@
 
 .plausible-link {
   text-decoration: none;
-  color: black;
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
+  font-family: colfax-web, Roboto, Helvetica Neue, Helvetica, Roboto, Arial,
+    sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #34363a;
+  text-rendering: optimizeLegibility;
 }
 
 .plausible-link:hover {

@@ -1,7 +1,6 @@
 import { RenderItemFormSidebarPanelCtx } from "datocms-plugin-sdk";
 import { Canvas } from "datocms-react-ui";
 import styles from "./styles.module.css";
-import plausibleLogo from "../assets/plausible-logo.svg";
 
 type PropTypes = {
   ctx: RenderItemFormSidebarPanelCtx;
@@ -37,17 +36,12 @@ export default function SidebarLink({ ctx }: PropTypes) {
             .replaceAll(` `, `_`)}`}
           rel="noreferrer"
         >
-          <img
-            className={styles["plausible-logo"]}
-            src={plausibleLogo}
-            alt="Plausible logo"
-          />
-          {ctx.item && (ctx.item.attributes.first_name as any)}
+          {ctx.item && `View in Plausible`}
         </a>
       ) : (
         <p>
           No pattern, site or slug available for this model, add it in plausible
-          link plugin settings
+          plugin settings
         </p>
       )}
     </Canvas>
