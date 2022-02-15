@@ -1,6 +1,6 @@
 # Plausible DatoCMS Plugin
 
-Datocms plugin that provides a link to plausible for the current record on the sidebar
+DatoCMS plugin that provides a link to [Plausible](https://www.plausible.io) for the current record on the sidebar
 
 ## Setup
 

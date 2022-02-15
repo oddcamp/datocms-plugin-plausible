@@ -1,8 +1,17 @@
 {
   "name": "datocms-plugin-plausible",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Provides a sidebar link to plausible for the current record",
+  "author": "Odd Camp",
+  "homepage": "https://github.com/oddcamp/datocms-plugin-plausible",
+  "version": "0.1.1",
+  "license": "MIT",
+  "description": "Plausible integration for DatoCMS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oddcamp/datocms-plugin-plausible.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oddcamp/datocms-plugin-plausible/issues"
+  },
   "dependencies": {
     "@types/node": "^16.11.21",
     "@types/react": "^17.0.38",
