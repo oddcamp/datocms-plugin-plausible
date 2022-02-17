@@ -2,7 +2,7 @@
   "name": "datocms-plugin-plausible",
   "author": "Odd Camp",
   "homepage": "https://github.com/oddcamp/datocms-plugin-plausible",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "description": "Plausible integration for DatoCMS",
   "repository": {
